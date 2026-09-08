@@ -7,7 +7,7 @@ O site apresenta uma seleção de projetos para dança, eventos e marcas, reunin
 ## Projetos em destaque
 
 - Rio Dance Lab
-- Intensivo Tami Nunes
+- Intensivo Thami Nunes
 - Templum Fitness
 - Núcleo 7.0
 - Outros trabalhos

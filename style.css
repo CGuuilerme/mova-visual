@@ -622,6 +622,16 @@ footer a:focus-visible {
     mask-image: linear-gradient(135deg, black, transparent 78%);
 }
 
+.video-previa {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #090909;
+    object-fit: cover;
+}
+
 .numero-previa {
     position: absolute;
     z-index: 2;
@@ -742,6 +752,23 @@ footer a:focus-visible {
     color: var(--texto-suave);
     font-size: clamp(1rem, 1.35vw, 1.2rem);
     line-height: 1.45;
+}
+
+.controles-outros-trabalhos {
+    width: min(100%, 640px);
+}
+
+.controles-outros-trabalhos .botao-previa {
+    margin-bottom: 16px;
+}
+
+.previa-outros,
+.controles-outros-trabalhos .link-projeto {
+    width: 100%;
+}
+
+.previa-outros {
+    margin-top: 0;
 }
 
 #contato {
