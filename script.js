@@ -7,12 +7,18 @@ function atualizarPrevia(controle, aberta) {
     const video = previa.querySelector("video");
 
     previa.hidden = !aberta;
-    linkProjeto.hidden = !aberta;
+    if (linkProjeto) {
+        linkProjeto.hidden = !aberta;
+    }
     if (projeto) {
         projeto.classList.toggle("projeto-aberto", aberta);
     }
-    if (!aberta && video) {
-        video.pause();
+    if (video) {
+        if (aberta) {
+            video.load();
+        } else {
+            video.pause();
+        }
     }
     rotulo.textContent = aberta ? "Fechar prévia" : "Ver prévia";
     botao.setAttribute("aria-label", `${aberta ? "Fechar" : "Abrir"} prévia de ${nomeProjeto}`);
@@ -22,9 +28,15 @@ function atualizarPrevia(controle, aberta) {
 botoes.forEach(function (botao) {
     const idPrevia = botao.getAttribute("aria-controls");
     const previa = document.getElementById(idPrevia);
+    if (!previa) {
+        return;
+    }
+
     const linkProjeto = previa.nextElementSibling;
     const rotulo = botao.querySelector(".rotulo-botao");
-    const nomeProjeto = botao.dataset.nomeProjeto || botao.closest(".projeto").querySelector("h3").textContent;
+    const projeto = botao.closest(".projeto");
+    const tituloProjeto = projeto ? projeto.querySelector("h3") : null;
+    const nomeProjeto = botao.dataset.nomeProjeto || (tituloProjeto ? tituloProjeto.textContent : "este trabalho");
     const controle = { botao, previa, linkProjeto, rotulo, nomeProjeto };
 
     controlesPrevias.push(controle);
